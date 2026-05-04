@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="140" viewBox="0 0 800 140" role="img" aria-label="Research pipeline from dataset to reported results">
+  <defs>
+    <style>
+      .box { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 1.5; }
+      .t { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif; font-size: 11px; fill: #24292f; font-weight: 600; }
+      .s { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif; font-size: 9px; fill: #57606a; }
+      .ln { stroke: #656d76; stroke-width: 1.4; fill: none; marker-end: url(#arr); }
+    </style>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#656d76"/>
+    </marker>
+  </defs>
+  <rect width="800" height="140" fill="#ffffff"/>
+  <g transform="translate(8,28)">
+    <rect class="box" x="0" y="0" width="92" height="84" rx="8"/>
+    <text class="t" x="46" y="28" text-anchor="middle">Dataset</text>
+    <text class="s" x="46" y="46" text-anchor="middle">ACD1K</text>
+    <text class="s" x="46" y="60" text-anchor="middle">splits</text>
+  </g>
+  <line class="ln" x1="108" y1="70" x2="124" y2="70"/>
+  <g transform="translate(124,28)">
+    <rect class="box" x="0" y="0" width="118" height="84" rx="8"/>
+    <text class="t" x="59" y="26" text-anchor="middle">Preprocessing</text>
+    <text class="s" x="59" y="44" text-anchor="middle">CLAHE (opt.)</text>
+    <text class="s" x="59" y="58" text-anchor="middle">resize / norm.</text>
+    <text class="s" x="59" y="72" text-anchor="middle">mask prep</text>
+  </g>
+  <line class="ln" x1="250" y1="70" x2="266" y2="70"/>
+  <g transform="translate(266,28)">
+    <rect class="box" x="0" y="0" width="132" height="84" rx="8"/>
+    <text class="t" x="66" y="26" text-anchor="middle">Model</text>
+    <text class="s" x="66" y="44" text-anchor="middle">Attention U-Net</text>
+    <text class="s" x="66" y="58" text-anchor="middle">or Attention</text>
+    <text class="s" x="66" y="72" text-anchor="middle">U-Net++</text>
+  </g>
+  <line class="ln" x1="406" y1="70" x2="422" y2="70"/>
+  <g transform="translate(422,28)">
+    <rect class="box" x="0" y="0" width="100" height="84" rx="8"/>
+    <text class="t" x="50" y="28" text-anchor="middle">Training</text>
+    <text class="s" x="50" y="50" text-anchor="middle">TF/Keras</text>
+    <text class="s" x="50" y="64" text-anchor="middle">notebooks</text>
+    <text class="s" x="50" y="78" text-anchor="middle">or scripts</text>
+  </g>
+  <line class="ln" x1="530" y1="70" x2="546" y2="70"/>
+  <g transform="translate(546,28)">
+    <rect class="box" x="0" y="0" width="118" height="84" rx="8"/>
+    <text class="t" x="59" y="26" text-anchor="middle">Evaluation</text>
+    <text class="s" x="59" y="44" text-anchor="middle">Acc, Prec,</text>
+    <text class="s" x="59" y="58" text-anchor="middle">Recall, F1,</text>
+    <text class="s" x="59" y="72" text-anchor="middle">IoU, Dice</text>
+  </g>
+  <line class="ln" x1="672" y1="70" x2="688" y2="70"/>
+  <g transform="translate(688,28)">
+    <rect class="box" x="0" y="0" width="104" height="84" rx="8"/>
+    <text class="t" x="52" y="28" text-anchor="middle">Reported</text>
+    <text class="s" x="52" y="50" text-anchor="middle">paper</text>
+    <text class="s" x="52" y="64" text-anchor="middle">metrics</text>
+  </g>
+</svg>
