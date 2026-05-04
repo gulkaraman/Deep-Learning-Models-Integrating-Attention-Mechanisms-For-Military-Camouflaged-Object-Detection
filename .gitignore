@@ -179,3 +179,22 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# --- Camouflaged object detection repository (data & artifacts) ---
+dataset/
+Project_Outputs/
+
+checkpoints/*.h5
+checkpoints/*.keras
+checkpoints/*.ckpt
+checkpoints/*.pt
+checkpoints/*.pth
+
+outputs/predictions/*
+outputs/metrics/*
+outputs/figures/*
+!outputs/predictions/.gitkeep
+!outputs/metrics/.gitkeep
+!outputs/figures/.gitkeep
+
+.ipynb_checkpoints/
