@@ -1,104 +1,121 @@
 # Deep Learning Models Integrating Attention Mechanisms For Military Camouflaged Object Detection
 
-Official companion repository for the published study on **military camouflaged object detection and segmentation** using **attention-enhanced deep learning** models on the **ACD1K** dataset.
+Official companion repository for the published study on military camouflaged object detection and segmentation using attention-enhanced deep learning models on the ACD1K dataset.
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.12--2.18-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
+[![TensorFlow / Keras](https://img.shields.io/badge/TensorFlow%20%2F%20Keras-2.12--2.18-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white)](https://opencv.org/)
-[![Deep Learning](https://img.shields.io/badge/Task-Semantic%20Segmentation-9333ea.svg)](https://github.com/gulkaraman/Deep-Learning-Models-Integrating-Attention-Mechanisms-For-Military-Camouflaged-Object-Detection)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebooks-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![Deep Learning](https://img.shields.io/badge/Deep%20Learning-Semantic%20Segmentation-9333ea.svg)](https://github.com/gulkaraman/Deep-Learning-Models-Integrating-Attention-Mechanisms-For-Military-Camouflaged-Object-Detection)
 [![Scopus](https://img.shields.io/badge/Indexed%20in-Scopus-004F9F.svg)](https://www.scopus.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Jupyter](https://img.shields.io/badge/Workflow-Jupyter%20%2B%20Scripts-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
 
 **Repository:** [github.com/gulkaraman/Deep-Learning-Models-Integrating-Attention-Mechanisms-For-Military-Camouflaged-Object-Detection](https://github.com/gulkaraman/Deep-Learning-Models-Integrating-Attention-Mechanisms-For-Military-Camouflaged-Object-Detection)
 
 ## Highlights
 
 - Published in a **Scopus-indexed** journal (*El-Cezeri Journal of Science and Engineering*)
-- Focused on **military camouflaged object** detection and **pixel-wise segmentation**
-- Uses the **ACD1K** adaptive camouflage dataset (bring your own copy; not bundled here)
-- Evaluates **Attention U-Net with ResNet-50** and **Attention U-Net++** with attention gates
-- Provides both **notebook-based** experiment archives and a **modular script pipeline** under `src/`
-- Reports **Accuracy** and **IoU** (among other metrics) with clear separation between **paper values** and **local reproduction**
+- Focused on **military camouflaged object detection and segmentation**
+- Uses the **ACD1K Adaptive Camouflage Dataset** (not bundled; configure local paths)
+- Evaluates **Attention-ResUNet** and **Attention-ResUNet++** style architectures (ResNet-50 encoder with attention; see notebooks and `src/models/`)
+- Includes **CLAHE** and **non-CLAHE** experimental settings
+- Compares **Adam**, **Adamax**, and **Adadelta** optimizers (plus dropout ablations in notebooks)
+- Provides **notebook-based** experiments and a **script-based** modular pipeline under `src/`
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Research Motivation](#research-motivation)
 - [Article Information](#article-information)
-- [Repository Highlights](#repository-highlights)
-- [Visual Overview](#visual-overview)
-- [Project Structure](#project-structure)
+- [Visual Results and Experimental Tables](#visual-results-and-experimental-tables)
+- [Experimental Configuration Summary](#experimental-configuration-summary)
+- [Published Results Summary](#published-results-summary)
 - [Methodology](#methodology)
-- [Experimental Configurations](#experimental-configurations)
-- [Published Results](#published-results)
-- [Reproducibility](#reproducibility)
+- [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Reproducibility](#reproducibility)
 - [Citation](#citation)
 - [Acknowledgments](#acknowledgments)
 - [Turkish Summary](#turkish-summary)
 
-## Overview
-
-**Why is this hard?** Camouflaged objects are designed to mimic background texture, colour, and scale. Local contrast at boundaries is often weak, so classical pipelines (thresholding, edge filters alone) frequently fail.
-
-**What this study does.** The work trains and evaluates **deep convolutional segmentation** models that combine **strong encoders** (ResNet-50) with **attention mechanisms** to emphasise informative spatial locations along skip connections.
-
-**Which models?** Two families are central: **Attention U-Net** (U-shaped decoder with attention-gated skips) and **Attention U-Net++** (nested skip pathways with attention).
-
-**What you will find here.** Root-level **Jupyter notebooks** (ablation naming encodes optimiser / dropout / CLAHE choices), **documentation** in `docs/`, **diagrams** in `mimariler/`, a reproducible **`config/`** layout, and a **Python package** under `src/` for script-based training and evaluation.
-
-## Research Motivation
-
-Military camouflaged objects are frequently embedded in **cluttered natural scenes**. Foreground and background can share **low-level statistics**, which reduces separability for hand-crafted cues.
-
-For that reason, this repository studies **attention-enhanced CNN segmenters** that learn hierarchical representations and **selectively fuse** multi-scale features. **IoU-focused** assessment is emphasised alongside accuracy, because overlap-based metrics better reflect **mask quality** when class imbalance or large background regions are present.
-
 ## Article Information
-
-### Table 1 — Article metadata
 
 | Field | Details |
 | --- | --- |
 | Title | Deep Learning Models Integrating Attention Mechanisms For Military Camouflaged Object Detection |
-| Journal | *El-Cezeri Journal of Science and Engineering* |
-| Indexing | **Scopus-indexed** journal |
+| Journal | El-Cezeri Journal of Science and Engineering |
+| Indexing | Scopus-indexed |
 | Year | 2026 |
-| Volume / Issue | 13 (2) |
+| Volume / Issue | 13(2) |
 | Pages | 146–160 |
 | DOI | [10.31202/ecjse.1747013](https://doi.org/10.31202/ecjse.1747013) |
-| Article link | [DergiPark (English article page)](https://dergipark.org.tr/en/pub/ecjse/article/1747013) |
+| Article Link | [https://dergipark.org.tr/en/pub/ecjse/article/1747013](https://dergipark.org.tr/en/pub/ecjse/article/1747013) |
 | Authors | Nilgün Şengöz, Gül Karaman, Mert Samet Çeliker, Nazmi Yücel Çan |
 
-## Repository Highlights
+## Visual Results and Experimental Tables
 
-This repository is structured for **three audiences**: readers of the paper who want artefacts, practitioners who will re-run notebooks, and engineers who prefer a **CLI-driven** workflow.
+The figures below are **exported result tables and augmentation examples** from the study materials. **Numerical values are read directly from the images**; for authoritative typesetting, refer to the [published PDF](https://dergipark.org.tr/en/pub/ecjse/article/1747013).
 
-- **Paper-aligned configs** under `config/` (including `paper_attention_unet_clahe_adamax.yaml` and `paper_attention_unetpp_adam.yaml`)
-- **Rich documentation** (`docs/`) for dataset layout, preprocessing, models, training, metrics, results, and reproducibility notes
-- **Visual assets** (`mimariler/`) illustrating architectures and workflow context
-- **Scripted pipeline** (`src/training`, `src/evaluation`) that mirrors notebook logic without deleting the original notebooks
+### Table 3: Attention-ResUNet without CLAHE
 
-## Visual Overview
+![Table 3 - Attention-ResUNet without CLAHE](docs/assets/readme/table_3_attention_resunet_without_clahe.png)
 
-### Attention U-Net (conceptual diagram)
+This table presents the metric results of the **Attention-ResUNet** model **without CLAHE** preprocessing under **Adam**, **Adamax**, and **Adadelta** optimizers with **different dropout rates**.
 
-![Attention U-Net style architecture diagram](mimariler/attention-unet_model_diagram.png)
+### Table 4: Attention-ResUNet with CLAHE
 
-*Illustrative diagram bundled with the repository: U-shaped decoder with skip connections and attention-style fusion (see notebooks and `src/models/attention_unet.py` for the implemented graph).*
+![Table 4 - Attention-ResUNet with CLAHE](docs/assets/readme/table_4_attention_resunet_with_clahe.png)
 
-### Attention U-Net++ (conceptual diagram)
+This table presents the **Attention-ResUNet** results after applying **CLAHE** preprocessing. It helps evaluate how **contrast enhancement** affects segmentation and classification-related metrics.
 
-![Attention U-Net++ style architecture diagram](mimariler/attention-unetplusplus-model-diagam.png)
+### Tables 5 and 6: Attention-ResUNet++ with and without CLAHE
 
-*Illustrative diagram for the nested / dense skip pathway variant evaluated in the `att-unet++*.ipynb` series and `src/models/attention_unet_plus_plus.py`.*
+![Tables 5 and 6 - Attention-ResUNet++ results](docs/assets/readme/table_5_6_attention_resunetpp_results.png)
 
-### End-to-end pipeline (repository overview)
+These tables summarize the **Attention-ResUNet++** metric results for both **non-CLAHE** and **CLAHE-based** experimental settings.
 
-![Dataset to reported results pipeline](docs/assets/readme/pipeline_overview.svg)
+### Data Augmentation Examples
 
-*Simplified operational flow aligned with the documentation: data are preprocessed, models are trained (notebooks or scripts), metrics are computed, and headline values are reported in the paper (`docs/RESULTS.md`).*
+![Data augmentation examples](docs/assets/readme/augmentation_examples.png)
+
+This figure shows **original image–mask pairs** and **augmented samples** used to increase data diversity during training.
+
+## Experimental Configuration Summary
+
+| Model | Preprocessing | Optimizers | Dropout Rates | Key Evaluation Metrics |
+| --- | --- | --- | --- | --- |
+| Attention-ResUNet | With and without CLAHE | Adam, Adamax, Adadelta | 0.2, 0.5 | Accuracy, AUC, Dice, F1-score, IoU, MCC, Mean IoU, Precision, Recall |
+| Attention-ResUNet++ | With and without CLAHE | Adam, Adamax, Adadelta | 0.2, 0.5 | Accuracy, AUC, Dice, F1-score, IoU, MCC, Mean IoU, Precision, Recall |
+
+## Published Results Summary
+
+Headline values below match the **paper’s highlighted comparisons** (see `docs/RESULTS.md`). **Do not** treat every notebook row as identical to these headline figures—full ablations are in the experimental tables above.
+
+| Model | Best Highlighted Configuration | Accuracy | IoU | Interpretation |
+| --- | --- | ---: | ---: | --- |
+| Attention-ResUNet | CLAHE + Adamax + learning rate 1e-5 + dropout 0.2 | 96.88% | 92.01% | Stronger for **segmentation-focused** usage due to high **IoU** |
+| Attention-ResUNet++ | Adam-based **reported** configuration in the paper | 98.32% | 82.09% | Stronger for **overall accuracy–oriented** evaluation |
+
+## Methodology
+
+### Dataset
+
+The experiments use the **ACD1K (Adaptive Camouflage Dataset)** for paired **RGB images** and **pixel-wise masks**. The raw dataset is **not redistributed** in this repository; see `docs/DATASET.md` for folder layout and acquisition notes.
+
+### Preprocessing
+
+Images are resized and normalized; masks are binarized. **CLAHE** in the LAB colour space is applied in selected runs to improve local contrast (see `docs/PREPROCESSING.md` and `src/data/preprocessing.py`). Notebooks may include additional **Albumentations** augmentations (see figure above).
+
+### Model Architectures
+
+**Attention-ResUNet** denotes a ResNet-50 encoder with an attention-augmented U-shaped decoder (`att unet *.ipynb`, `src/models/attention_unet.py`). **Attention-ResUNet++** denotes the nested skip variant with attention (`att-unet++*.ipynb`, `src/models/attention_unet_plus_plus.py`). Diagrams in `mimariler/` illustrate the high-level topology.
+
+### Training Strategy
+
+Training is implemented in **TensorFlow / Keras** with experiment-specific optimisers and dropout. Notebooks historically include **K-fold** and rich callback logging; the **script pipeline** (`src/training/train.py`) trains on explicit `train/` and `val/` splits from YAML—see `docs/TRAINING.md` and `docs/REPRODUCIBILITY.md` for differences.
+
+### Evaluation Metrics
+
+Models are evaluated with **Accuracy, Precision, Recall, F1-score, IoU, Dice**, and additional notebook metrics such as **AUC, MCC, Mean IoU** (`docs/EVALUATION_METRICS.md`, `src/training/metrics.py`). **IoU** is particularly informative for **mask overlap** quality in camouflaged segmentation.
 
 ## Project Structure
 
@@ -110,81 +127,16 @@ This repository is structured for **three audiences**: readers of the paper who 
 ├── requirements.txt
 ├── .gitignore
 ├── config/
-│   ├── example_config.yaml
-│   ├── paper_attention_unet_clahe_adamax.yaml
-│   └── paper_attention_unetpp_adam.yaml
 ├── docs/
-│   ├── assets/readme/pipeline_overview.svg
-│   ├── DATASET.md
-│   ├── MODEL_ARCHITECTURE.md
-│   ├── PREPROCESSING.md
-│   ├── TRAINING.md
-│   ├── EVALUATION_METRICS.md
-│   ├── RESULTS.md
-│   └── REPRODUCIBILITY.md
-├── mimariler/
-├── checkpoints/          # local only; tracked via .gitkeep (see .gitignore)
-├── outputs/              # local predictions/metrics/figures; .gitkeep placeholders
-├── src/                  # modular training / evaluation code
-├── att unet *.ipynb      # Attention U-Net experiment notebooks
-└── att-unet++*.ipynb     # Attention U-Net++ experiment notebooks
+│   ├── assets/readme/          # README figures (tables, augmentation, pipeline.svg)
+│   └── …                       # DATASET, MODEL_ARCHITECTURE, TRAINING, etc.
+├── src/                        # Script-based training & evaluation
+├── mimariler/                  # Architecture diagrams (PNG)
+├── checkpoints/                # Local weights (gitignored patterns; .gitkeep only)
+├── outputs/                    # Local metrics / predictions / figures (.gitkeep placeholders)
+├── att unet *.ipynb            # Attention-ResUNet experiment notebooks
+└── att-unet++*.ipynb           # Attention-ResUNet++ experiment notebooks
 ```
-
-## Methodology
-
-### Dataset
-
-The study uses **ACD1K** (Adaptive Camouflage Dataset) for supervised **image–mask** learning. The dataset is **not vendored** in this repository; see `docs/DATASET.md` for directory conventions and acquisition notes.
-
-### Preprocessing
-
-Pipelines include **resize**, **intensity normalisation**, **binary mask thresholding**, and optional **CLAHE** in the LAB colour space (see `docs/PREPROCESSING.md` and `src/data/preprocessing.py`). Some notebooks enable **Albumentations** geometric augmentation; the script trainer currently focuses on the core loading path (see `docs/REPRODUCIBILITY.md` for notebook–script differences).
-
-### Model Architectures
-
-- **Attention U-Net + ResNet-50:** ImageNet initialised encoder with multi-scale skips and **attention gates** that suppress low-salience background responses (`src/models/attention_unet.py`).
-- **Attention U-Net++ + ResNet-50:** **Nested skip** fusion with attention for richer multi-scale mixing (`src/models/attention_unet_plus_plus.py`).
-
-### Training Strategy
-
-Notebooks historically drive **K-fold** and `model.fit` loops with callbacks (checkpoints, early stopping, CSV logs). The `src/training/train.py` entry point trains on explicit `train/` and `val/` splits from YAML—consult `docs/TRAINING.md` and `docs/REPRODUCIBILITY.md` before expecting a bit-for-bit match to every notebook run.
-
-### Evaluation Metrics
-
-Segmentation quality is assessed with **Accuracy, Precision, Recall, F1-score, IoU, and Dice** (see `docs/EVALUATION_METRICS.md` and `src/training/metrics.py`). **IoU** is highlighted because it directly measures **spatial overlap** between predicted and reference masks.
-
-## Experimental Configurations
-
-### Table 2 — Configuration summary (high level)
-
-| Model | Backbone | Preprocessing | Optimizer | Learning Rate | Dropout | Workflow Type |
-| --- | --- | --- | --- | --- | --- | --- |
-| Attention U-Net | ResNet-50 | CLAHE / non-CLAHE variants | Adam / Adamax / Adadelta variants | `1e-5` in headline paper configuration | `0.2` / `0.5` notebook variants | Notebook + Script |
-| Attention U-Net++ | ResNet-50 (nested skips) | CLAHE / non-CLAHE variants | Adam / Adamax / Adadelta variants | `1e-5` in headline notebook filenames (`att-unet++-*-lr=1e-5-*`) | `0.2` / `0.5` notebook variants | Notebook + Script |
-
-**Notes.**
-
-- Notebook filenames encode major ablations (optimiser, dropout, CLAHE on/off). Always open the notebook header cells for the exact compile block used in a run.
-- YAML files under `config/` capture **representative** script settings; adjust paths before training on your machine.
-
-## Published Results
-
-### Table 3 — Headline metrics (as reported in the paper)
-
-| Model | Preprocessing | Optimizer | Learning Rate | Dropout | Accuracy | IoU | Interpretation |
-| --- | --- | --- | --- | --- | ---: | ---: | --- |
-| Attention U-Net / ResNet-50 | CLAHE | Adamax | `1e-5` | `0.2` | 96.88% | 92.01% | Higher **IoU** supports **segmentation-centric** deployment (better overlap / boundary fidelity). |
-| Attention U-Net++ | Paper text: “similar experimental setup” (see article PDF for exact wording) | Adam | `1e-5` (matches `att-unet++-adam-lr=1e-5-*` notebooks and `config/paper_attention_unetpp_adam.yaml`) | Paper table shows “—”; several primary notebooks use `0.2` (e.g. `droput=0,2` in filenames—confirm spelling vs. paper table) | 98.32% | 82.09% | Higher **accuracy** is attractive when **global pixel correctness** dominates the operational criterion. |
-
-**Discussion.** No single scalar tells the whole story: **IoU** penalises both missed foreground and bloated predictions, whereas **accuracy** can be influenced by class balance. **Choose the model and preprocessing chain based on mission constraints** (mask quality vs. aggregate correctness).
-
-## Reproducibility
-
-- **Notebook path:** run the relevant `*.ipynb` end-to-end after configuring local dataset paths.
-- **Script path:** `python -m src.training.train --config ...` with the `dataset/train` and `dataset/val` layout described in `docs/DATASET.md`.
-- **Dataset requirement:** full training and quantitative reproduction require you to supply **ACD1K** locally; this repository intentionally excludes raw imagery.
-- **Paper metrics:** headline **Accuracy / IoU** numbers above are **as published**; rerunning scripts without the official split and seeds may yield different values.
-- **Notebook vs. script parity:** some notebook-only choices (e.g. extended K-fold schedules, certain callback monitor names) may differ slightly from the scripted defaults—see the “Notebook-to-script migration notes” in `docs/REPRODUCIBILITY.md`.
 
 ## Installation
 
@@ -197,17 +149,8 @@ cd Deep-Learning-Models-Integrating-Attention-Mechanisms-For-Military-Camouflage
 python -m venv .venv
 ```
 
-**Windows (PowerShell)**
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-**macOS / Linux**
-
-```bash
-source .venv/bin/activate
-```
+**Windows (PowerShell):** `.\.venv\Scripts\Activate.ps1`  
+**macOS / Linux:** `source .venv/bin/activate`
 
 ```bash
 pip install -U pip
@@ -216,14 +159,14 @@ pip install -r requirements.txt
 
 ## Usage
 
-### A) Notebook-based usage
+### Notebook-based usage
 
-1. Launch Jupyter (`jupyter lab`).
-2. Open the desired `att unet *.ipynb` or `att-unet++*.ipynb` notebook.
-3. Point the notebook `PATH` variables to your local **ACD1K** split.
-4. Execute cells sequentially.
+1. Install dependencies and launch Jupyter.  
+2. Open the relevant `att unet *.ipynb` or `att-unet++*.ipynb` notebook.  
+3. Set dataset `PATH` variables to your local **ACD1K** split.  
+4. Run cells sequentially.
 
-### B) Script-based usage
+### Script-based usage
 
 From the repository root:
 
@@ -239,14 +182,18 @@ python -m src.evaluation.evaluate --config config/paper_attention_unet_clahe_ada
 python -m src.evaluation.predict --config config/paper_attention_unet_clahe_adamax.yaml --checkpoint checkpoints/attention_unet_paper.keras --input path/to/images --output outputs/predictions
 ```
 
-## Citation
+## Reproducibility
 
-**DOI:** [https://doi.org/10.31202/ecjse.1747013](https://doi.org/10.31202/ecjse.1747013)
+- **Notebooks** preserve the original experiment archive (optimiser / dropout / CLAHE naming in filenames).  
+- **Scripts** mirror core training logic but may differ in **data split** and **K-fold** behaviour—read `docs/REPRODUCIBILITY.md`.  
+- **Paper headline metrics** in *Published Results Summary* are fixed reporting values; reproducing them requires the official dataset setup and matching protocol.
+
+## Citation
 
 ```bibtex
 @article{Sengoz2026CamouflagedObjectDetection,
   title={Deep Learning Models Integrating Attention Mechanisms For Military Camouflaged Object Detection},
-  author={{\c{S}}eng{\"o}z, Nilg{\"u}n and Karaman, G{\"u}l and {\c{C}}eliker, Mert Samet and {\c{C}}an, Nazmi Y{\"u}cel},
+  author={Şengöz, Nilgün and Karaman, Gül and Çeliker, Mert Samet and Çan, Nazmi Yücel},
   journal={El-Cezeri Journal of Science and Engineering},
   volume={13},
   number={2},
@@ -256,9 +203,7 @@ python -m src.evaluation.predict --config config/paper_attention_unet_clahe_adam
 }
 ```
 
-Plain-text author line (for quick copy): Nilgün Şengöz, Gül Karaman, Mert Samet Çeliker, Nazmi Yücel Çan.
-
-A machine-readable citation file is also provided in `CITATION.cff`.
+Machine-readable metadata: `CITATION.cff`.
 
 ## Acknowledgments
 
@@ -266,4 +211,4 @@ We would like to thank our supervisor, co-authors, and colleagues for their valu
 
 ## Turkish Summary
 
-Bu çalışma, askeri kamufle nesnelerin tespiti ve segmentasyonu için attention mekanizmalarıyla güçlendirilmiş derin öğrenme modellerini değerlendirmektedir. ACD1K veri seti üzerinde Attention U-Net / ResNet-50 ve Attention U-Net++ mimarileri incelenmiş; doğruluk ve IoU sonuçları karşılaştırılmıştır. Çalışma, Scopus’ta indekslenen *El-Cezeri Journal of Science and Engineering* dergisinde yayımlanmıştır.
+Bu çalışma, askeri kamufle nesnelerin tespiti ve segmentasyonu için attention mekanizmalarıyla güçlendirilmiş derin öğrenme modellerini değerlendirmektedir. ACD1K veri seti üzerinde Attention-ResUNet ve Attention-ResUNet++ mimarileri incelenmiş; CLAHE ve CLAHE'siz deneyler karşılaştırılmıştır. Çalışma, Scopus'ta indekslenen El-Cezeri Journal of Science and Engineering dergisinde yayımlanmıştır.
