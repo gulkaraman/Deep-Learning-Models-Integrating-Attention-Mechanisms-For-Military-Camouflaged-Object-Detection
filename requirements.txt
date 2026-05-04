@@ -1,0 +1,19 @@
+# Deep learning (TensorFlow / Keras as used in notebooks)
+tensorflow>=2.12,<2.19
+
+# Vision & numerics
+opencv-python>=4.8.0
+numpy>=1.24.0
+pandas>=2.0.0
+albumentations>=1.3.0
+
+# Plotting & metrics
+matplotlib>=3.7.0
+seaborn>=0.13.0
+scikit-learn>=1.3.0
+tqdm>=4.66.0
+PyYAML>=6.0.0
+
+# Notebooks
+jupyter>=1.0.0
+ipykernel>=6.25.0

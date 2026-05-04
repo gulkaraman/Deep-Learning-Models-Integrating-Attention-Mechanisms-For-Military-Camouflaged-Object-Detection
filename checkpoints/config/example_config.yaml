@@ -1,0 +1,33 @@
+# Example configuration for the script-based pipeline (`python -m src.training.train --config ...`).
+# ``image_size`` is ``[height, width]`` (see ``src/data/preprocessing.py``).
+
+model_name: attention_unet
+backbone: resnet50
+loss: binary_crossentropy
+optimizer: adamax
+learning_rate: 1.0e-5
+dropout: 0.2
+use_clahe: true
+
+image_size: [256, 256]
+batch_size: 32
+epochs: 150
+seed: 42
+
+dataset_path: dataset
+checkpoint_dir: checkpoints
+checkpoint_filename: model_best.keras
+results_dir: outputs/metrics
+csv_log_filename: training_log.csv
+
+# Encoder freezing (Attention U-Net notebooks); ignored for U-Net++ (see ``unetpp_resnet_trainable``).
+freeze_resnet_layers: 50
+unetpp_resnet_trainable: true
+
+early_stopping_patience: 40
+early_stopping_min_delta: 1.0e-4
+
+checkpoint_monitor: val_loss
+checkpoint_mode: min
+
+include_notebook_aux_metrics: true
