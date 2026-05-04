@@ -1,0 +1,31 @@
+# Paper-aligned Attention U-Net++ row (Adam). Matches ``att-unet++-adam-*-clahesiz*.ipynb`` style runs.
+
+model_name: attention_unet_plus_plus
+backbone: resnet50
+loss: binary_focal_crossentropy
+optimizer: adam
+learning_rate: 1.0e-5
+dropout: 0.2
+use_clahe: false
+
+image_size: [256, 256]
+batch_size: 32
+epochs: 150
+seed: 42
+
+dataset_path: dataset
+checkpoint_dir: checkpoints
+checkpoint_filename: attention_unetpp_paper.keras
+results_dir: outputs/metrics
+csv_log_filename: training_attention_unetpp_paper.csv
+
+freeze_resnet_layers: 0
+unetpp_resnet_trainable: true
+
+early_stopping_patience: 40
+early_stopping_min_delta: 1.0e-4
+
+checkpoint_monitor: val_iou
+checkpoint_mode: max
+
+include_notebook_aux_metrics: true

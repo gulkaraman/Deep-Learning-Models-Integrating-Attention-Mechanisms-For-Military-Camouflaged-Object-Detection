@@ -1,0 +1,32 @@
+# Paper-aligned Attention U-Net (ResNet-50) + CLAHE + Adamax + lr 1e-5 + dropout 0.2
+# Published paper results (Accuracy / IoU) are documented in docs/RESULTS.md (not auto-reproduced).
+
+model_name: attention_unet
+backbone: resnet50
+loss: binary_crossentropy
+optimizer: adamax
+learning_rate: 1.0e-5
+dropout: 0.2
+use_clahe: true
+
+image_size: [256, 256]
+batch_size: 32
+epochs: 150
+seed: 42
+
+dataset_path: dataset
+checkpoint_dir: checkpoints
+checkpoint_filename: attention_unet_paper.keras
+results_dir: outputs/metrics
+csv_log_filename: training_attention_unet_paper.csv
+
+freeze_resnet_layers: 50
+unetpp_resnet_trainable: true
+
+early_stopping_patience: 40
+early_stopping_min_delta: 1.0e-4
+
+checkpoint_monitor: val_iou
+checkpoint_mode: max
+
+include_notebook_aux_metrics: true
